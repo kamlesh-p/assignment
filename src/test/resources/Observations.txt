@@ -1,0 +1,16 @@
+1. Passenger details page - Source/destination name is not shown.
+
+2. Price is not shown correctly in Passenger details page.
+
+3. card and passenger details merged to same page.
+
+4. 'Remember me' - functionality is for Passenger details/card details.
+
+5. Button name in purchase details page is 'Purchase flight' should have been 'purchase ticket' or more meaningful.
+
+6. No input type restriction in input fields. (ex: character type, length)
+
+7. User is shown with json response.
+
+8. Filed name in purchase details page says 'credit card number', will it not accept 'debit card'? 
+ 
