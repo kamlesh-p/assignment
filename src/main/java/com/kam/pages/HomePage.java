@@ -3,6 +3,7 @@ package com.kam.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import com.kam.base.BasePage;
 
@@ -21,10 +22,10 @@ public class HomePage extends BasePage {
 		super(driver);
 	}
 
-	public void findFlights(String fromCity, String toCity) {
+	public FlightListPage findFlights(String fromCity, String toCity) {
 		selectFromDropdownByVisibleText(ddlDepartureCity, fromCity);
 		selectFromDropdownByVisibleText(ddlDestinationCity, toCity);
 		clickElement(btnFindFlights);
-		
+		return PageFactory.initElements(driver, FlightListPage.class);
 	}
 }

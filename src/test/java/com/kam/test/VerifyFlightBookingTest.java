@@ -2,6 +2,7 @@ package com.kam.test;
 
 import org.testng.annotations.Test;
 
+import com.kam.pages.FlightListPage;
 import com.kam.pages.HomePage;
 
 /**
@@ -14,6 +15,7 @@ public class VerifyFlightBookingTest extends TestBase {
 	@Test
 	private void verifyFlightBookingWithValidDetails() {
 		HomePage homePage = navigateToBlazeDeomHomePage();
-		homePage.findFlights("Paris", "Rome");
+		FlightListPage flightListPage = homePage.findFlights("Paris", "Rome");
+		flightListPage.bookFlight("9696");
 	}
 }
