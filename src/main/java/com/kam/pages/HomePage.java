@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Reporter;
 
 import com.kam.base.BasePage;
 
@@ -23,6 +24,7 @@ public class HomePage extends BasePage {
 	}
 
 	public FlightListPage findFlights(String fromCity, String toCity) {
+		Reporter.log("Find flight from " + fromCity + " to " + toCity);
 		selectFromDropdownByVisibleText(ddlDepartureCity, fromCity);
 		selectFromDropdownByVisibleText(ddlDestinationCity, toCity);
 		clickElement(btnFindFlights);

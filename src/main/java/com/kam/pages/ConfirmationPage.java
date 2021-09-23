@@ -1,12 +1,11 @@
 package com.kam.pages;
 
-import java.util.List;
 import java.util.logging.Logger;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Reporter;
 
 import com.kam.base.BasePage;
 
@@ -27,6 +26,9 @@ public class ConfirmationPage extends BasePage {
 	}
 
 	public String getConfirmationId() {
-		return lblConfirmationId.getText();
+		String id = lblConfirmationId.getText();
+		log.info(id);
+		Reporter.log("Confirmation Id:" + id);
+		return id;
 	}
 }

@@ -1,10 +1,10 @@
 package com.kam.pages;
 
-import java.util.logging.Logger;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Reporter;
 
 import com.kam.base.BasePage;
 import com.kam.common.CardType;
@@ -15,8 +15,6 @@ import com.kam.common.CardType;
  *
  */
 public class PurchaseDetailsPage extends BasePage {
-
-	private final Logger log = Logger.getLogger(this.getClass().getName());
 
 	@FindBy(xpath = "//*[contains(text(), 'Your flight from')]")
 	WebElement lblHeaderMessage;
@@ -58,7 +56,17 @@ public class PurchaseDetailsPage extends BasePage {
 		super(driver);
 	}
 
+	/**
+	 * Fill Passenger Details.
+	 * 
+	 * @param name
+	 * @param address
+	 * @param city
+	 * @param state
+	 * @param zipCode
+	 */
 	public void fillPassengerDetails(String name, String address, String city, String state, String zipCode) {
+		Reporter.log("Fill Passenger Details.");
 		setText(txtName, name);
 		setText(txtAddress, address);
 		setText(txtCity, city);
@@ -66,15 +74,31 @@ public class PurchaseDetailsPage extends BasePage {
 		setText(txtZipCode, zipCode);
 	}
 
-	public void fillCardDetails(CardType cardType, String cardNumber, String cardMonth, String cardYear) {
+	/**
+	 * Fill Card Details.
+	 * 
+	 * @param cardType
+	 * @param cardNumber
+	 * @param cardMonth
+	 * @param cardYear
+	 */
+	public void fillCardDetails(CardType cardType, String cardNumber, String cardMonth, String cardYear,
+			String nameOnCard) {
+		Reporter.log("Fill Card Details.");
 		selectFromDropdownByVisibleText(ddlCardType, cardType.getValue());
 		setText(txtCardNumber, cardNumber);
 		setText(txtCardMonth, cardMonth);
 		setText(txtCardYear, cardYear);
+		setText(txtNameOnCard, nameOnCard);
 	}
 
-	public void clickPurchaseFlight() {
+	/**
+	 * 
+	 * @return ConfirmationPage
+	 */
+	public ConfirmationPage clickPurchaseFlight() {
 		clickElement(btnPurchaseFlight);
+		return PageFactory.initElements(driver, ConfirmationPage.class);
 	}
 
 }

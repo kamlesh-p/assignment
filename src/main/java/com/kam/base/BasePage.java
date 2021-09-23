@@ -17,6 +17,7 @@ public class BasePage {
 	}
 
 	protected void setText(WebElement element, String text) {
+		element.clear();
 		element.sendKeys(text);
 	}
 

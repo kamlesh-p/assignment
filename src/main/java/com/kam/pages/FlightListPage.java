@@ -1,6 +1,5 @@
 package com.kam.pages;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -8,6 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Reporter;
 
 import com.kam.base.BasePage;
 
@@ -35,11 +36,13 @@ public class FlightListPage extends BasePage {
 	 * 
 	 * @param flightNumber
 	 */
-	public void bookFlight(String flightNumber) {
+	public PurchaseDetailsPage bookFlight(String flightNumber) {
+		Reporter.log("Book flight: " + flightNumber);
 		List<WebElement> rows = tblFlights.findElements(By.tagName("tr"));
 		if (rows.isEmpty()) {
+			Reporter.log("No flight found");
 			log.info("No flight found");
-			return;
+			return null;
 		}
 
 		boolean flightFound = false;
@@ -53,7 +56,10 @@ public class FlightListPage extends BasePage {
 		}
 
 		if (!flightFound) {
+			Reporter.log("Flight not found");
 			log.info("Flight not found");
+			return null;
 		}
+		return PageFactory.initElements(driver, PurchaseDetailsPage.class);
 	}
 }

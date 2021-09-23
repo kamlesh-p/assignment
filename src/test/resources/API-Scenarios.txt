@@ -1,0 +1,9 @@
+1. User should be able to fetch launch details with valid request.
+
+2. User should be able to fetch valid details for launch. (verify details with DB)
+
+3. User should get valid response code when data exist.
+
+4. User should get valid response code when no data exist for request.
+
+5. 
